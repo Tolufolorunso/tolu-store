@@ -12,13 +12,13 @@ MyStore is a single-page Angular application that provides a dynamic, rich onlin
 ## Test with this user credentials
 
 ```javascript
-username: "testuser";
-password: "test123";
+username: "tolufolorunso";
+password: "12345";
 ```
 
 ## Clone
 
-- Clone this repo to your local machine using `https://github.com/Tolufolorunso/storefront_API_Udacity.git`
+- Clone this repo to your local machine using `https://github.com/Tolufolorunso/tolu-store.git`
 
 ## Installation
 

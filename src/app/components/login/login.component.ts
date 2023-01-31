@@ -14,6 +14,7 @@ import { User } from 'src/app/models/User';
 export class LoginComponent implements OnDestroy {
   username: string = '';
   password: string = '';
+  loading: boolean = false;
 
   constructor(
     private auth: AuthenticationService,
@@ -31,6 +32,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   login(): void {
+    this.loading = true;
     this.auth.login(this.username, this.password).subscribe({
       next: (response: any) => {
         this.auth.isLogin = true;
@@ -56,6 +58,7 @@ export class LoginComponent implements OnDestroy {
           error: { message },
           statusText,
         } = err;
+        this.loading = false;
         if (statusText === 'Unknown Error') {
           let message = 'Try again later, server down';
           this.appService.showAlert({
@@ -75,6 +78,7 @@ export class LoginComponent implements OnDestroy {
         setTimeout(() => {
           this.appService.clearAlert();
         }, 3000);
+        this.loading = false;
       },
     });
   }

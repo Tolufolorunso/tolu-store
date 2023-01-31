@@ -20,6 +20,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   total: number = 0;
   form: any;
+  loading: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -60,6 +61,7 @@ export class CartComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   submitOrder(form: NgForm): void {
+    this.loading = true;
     const data = this.authService.getUser();
     if (!data.token) {
       localStorage.setItem('currLocation', this.route.url);
@@ -90,6 +92,7 @@ export class CartComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.log(err.error);
+        this.loading = false;
       },
       complete: () => {
         const orderDetail = { ...form.value, total: this.calculateProduct() };
@@ -98,6 +101,7 @@ export class CartComponent implements OnInit, OnDestroy {
           this.appService.clearAlert();
         }, 1500);
         this.route.navigate(['/orders/success']);
+        this.loading = false;
       },
     });
   }

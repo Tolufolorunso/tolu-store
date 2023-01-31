@@ -18,6 +18,7 @@ export class AddProductComponent implements OnInit {
   category: string = '';
   stock: number = 1;
   preview: string = '';
+  loading: boolean = false;
 
   options: string[] = [];
 
@@ -50,6 +51,7 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct(): void {
+    this.loading = true;
     this.appService.clearAlert();
     const canCreateProduct = [
       this.name,
@@ -98,6 +100,7 @@ export class AddProductComponent implements OnInit {
           return;
         }
         this.appService.showAlert({ message: message, show: true });
+        this.loading = false;
       },
       complete: () => {
         setTimeout(() => {
@@ -109,6 +112,7 @@ export class AddProductComponent implements OnInit {
         this.category = '';
         this.file = '';
         this.stock = 1;
+        this.loading = false;
       },
     });
   }

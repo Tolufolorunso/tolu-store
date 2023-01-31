@@ -13,6 +13,7 @@ export class RegisterComponent {
   firstname: string = '';
   lastname: string = '';
   password: string = '';
+  loading: boolean = false;
 
   constructor(
     private auth: AuthenticationService,
@@ -30,6 +31,7 @@ export class RegisterComponent {
   }
 
   register(): void {
+    this.loading = true;
     const user = {
       username: this.username,
       firstname: this.firstname,
@@ -51,6 +53,7 @@ export class RegisterComponent {
           error: { message },
           statusText,
         } = err;
+        this.loading = false;
         if (statusText === 'Unknown Error') {
           this.appService.showAlert({
             message: 'Try again later, server down',
@@ -73,6 +76,7 @@ export class RegisterComponent {
         setTimeout(() => {
           this.router.navigate(['/users/login']);
         }, 3000);
+        this.loading = false;
       },
     });
   }

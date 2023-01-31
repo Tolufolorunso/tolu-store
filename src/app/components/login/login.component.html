@@ -11,7 +11,7 @@
         <input type="text" id="password" name="password" required minlength="5" maxlength="50" class="outline-none border border-yellow-50 border-solid rounded py-2 px-3 w-full" [(ngModel)]="password">
       </div>
       <div class="mb-2">
-        <input [disabled]="form.invalid" type="submit" value="Login" class="border-0 rounded-sm px-4 py-2 text-white  bg-lime-700 hover:bg-lime-600">
+        <input [disabled]="form.invalid" type="submit" [value]="!loading ? 'Login' : 'Login...'" class="border-0 rounded-sm px-4 py-2 text-white  bg-lime-700 hover:bg-lime-600">
       </div>
     </form>
   </div>
