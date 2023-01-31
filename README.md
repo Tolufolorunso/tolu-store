@@ -13,7 +13,7 @@ MyStore is a single-page Angular application that provides a dynamic, rich onlin
 
 ```javascript
 username: "testuser";
-password: "test";
+password: "test123";
 ```
 
 ## Clone
