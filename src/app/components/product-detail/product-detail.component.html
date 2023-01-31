@@ -1,0 +1,21 @@
+<main>
+  <div class="container">
+    <div class="flex justify-center items-center flex-col md:flex-row gap-10 w-full lg:w-1/2 mt-20 mx-auto">
+      <div class="w-full md:w-1/2 h-96">
+        <img [src]="imgUrl" [alt]="alt" class="object-cover w-full h-full">
+      </div>
+      <div class="w-full md:w-1/2 flex flex-col gap-2">
+        <h1 class="text-5xl font-bold">{{productName}}</h1>
+        <h2 class="text-3xl font-bold">{{productPrice | currency}}</h2>
+        <p class="font-medium">{{productDesc}}</p>
+        <form class="flex flex-col gap-1">
+          <select id="stock" class="p-1 border rounded disabled:bg-gray-200 disabled:opacity-20" (change)="quantityChange($event)" [disabled]="isProductExistsInCart">
+            <option *ngFor="let stock of stocks" [value]="stock" [selected]="stock === quantity">{{stock}}</option>
+          </select>
+          <input (click)="addToCart()" class="bg-app-100 text-white py-2 px-3 rounded border shadow-md hover:bg-app-200 disabled:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed" type="submit" [disabled]="isProductExistsInCart" [value]="!isProductExistsInCart ? 'AddToCart' : 'Added'">
+        </form>
+        <button routerLink="/" class="py-2 px-3 rounded border shadow-md hover:bg-app-100 hover:text-white">↩Back to product list</button>
+      </div>
+    </div>
+  </div>
+</main>

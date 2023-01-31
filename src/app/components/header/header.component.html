@@ -1,0 +1,29 @@
+<nav class="nav bg-app-100 text-white p-2">
+  <div class="container">
+    <div class="flex justify-between">
+      <a class="logo hover:text-white" routerLink="/">
+        tolu-store
+      </a>
+      <ul class="flex gap-2">
+        <li class="nav__list">
+          <a routerLink="/" class="p-1 hover:text-neutral-50">Home</a>
+        </li>
+        <li class="nav__list" *ngIf="isLogin">
+          <a routerLink="/cart" routerLinkActive="underline" class="hover:text-neutral-50">Cart</a>
+        </li>
+        <li class="nav__list" *ngIf="isLogin">
+          <a routerLink="/profile" routerLinkActive="underline" class="hover:text-neutral-50">Profile</a>
+        </li>
+        <li class="nav__list" *ngIf="!isLogin">
+          <a routerLink="/users/register" routerLinkActive="underline" class="hover:text-neutral-50">Register</a>
+        </li>
+        <li class="nav__list" *ngIf="!isLogin">
+          <a routerLink="/users/login" routerLinkActive="underline" class="hover:text-neutral-50">Login</a>
+        </li>
+        <li class="nav__list" *ngIf="isLogin">
+          <a routerLink="#" (click)="logout()" class="hover:text-neutral-50 cursor-pointer">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

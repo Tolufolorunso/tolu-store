@@ -1,0 +1,18 @@
+<div class="h-screen">
+  <div class="container">
+    <form #form="ngForm" (ngSubmit)="login()" class="border px-4 py-5 mt-4 max-w-3xl mx-auto rounded-lg">
+      <h1 class="text-center mb-2">Login Now</h1>
+      <div class="mb-2 flex flex-col">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required minlength="2" maxlength="50" class="outline-none border border-yellow-50 border-solid rounded py-2 px-3 w-full" [(ngModel)]="username">
+      </div>
+      <div class="mb-2 flex flex-col">
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" required minlength="5" maxlength="50" class="outline-none border border-yellow-50 border-solid rounded py-2 px-3 w-full" [(ngModel)]="password">
+      </div>
+      <div class="mb-2">
+        <input [disabled]="form.invalid" type="submit" value="Login" class="border-0 rounded-sm px-4 py-2 text-white  bg-lime-700 hover:bg-lime-600">
+      </div>
+    </form>
+  </div>
+</div>

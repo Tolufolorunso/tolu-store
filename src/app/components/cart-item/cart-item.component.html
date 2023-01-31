@@ -1,0 +1,15 @@
+<div class="flex flex-col md:flex-row gap-2 mb-7 md:mb-2 justify-center items-center">
+  <div class="w-full md:w-1/2 h-32">
+    <img [src]="imgUrl" [alt]="cartItem.product.name" class="object-cover w-full h-full">
+  </div>
+  <div class="w-full md:w-1/2 flex flex-col gap-1">
+    <h1 class="text-2xl font-bold">{{cartItem.product.name}}</h1>
+    <h2 class="text-1xl font-bold">{{cartItem.product.price}}</h2>
+    <p class="font-medium truncate">{{cartItem.product.description}}</p>
+    <div class="flex gap-1 items-center">
+      <button (click)="increase(cartItem._id)" class="w-fit border py-1 px-2 cursor-pointer rounded active:bg-app-200 active:text-white">+</button>
+      <p class="text-lg">{{cartItem.quantity}}</p>
+      <button (click)="decrease(cartItem._id)" class="w-fit border py-1 px-2 cursor-pointer rounded active:bg-app-200 active:text-white">-</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<main class="mt-10">
+  <div class="container">
+    <div class="flex flex-col gap-2 items-center">
+      <h1 class="font-bold text-3xl">Name: <span class="font-medium"> {{firstname}} {{firstname}}</span></h1>
+      <h2 class="font-bold text-2xl">username: <span class="font-medium"> {{username}}</span></h2>
+      <h2 class="font-bold text-2xl">Role: <span class="font-medium">{{role}}</span></h2>
+      <a *ngIf="role==='admin'" class="border-0 rounded-sm px-4 py-2 text-white  bg-lime-700 hover:bg-lime-600" routerLink="/products/add-product">Add Product</a>
+    </div>
+  </div>
+</main>
