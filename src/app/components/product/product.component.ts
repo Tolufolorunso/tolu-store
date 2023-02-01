@@ -12,7 +12,6 @@ import { Product } from 'src/app/models/Product';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
 
-  imgUrl!: string;
   stocks: number[] = [];
   quantity: number = 1;
 
@@ -24,7 +23,6 @@ export class ProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
-    this.imgUrl = `${API_URL}/${this.product.imageurl}`;
     for (let i = this.product.stock; i >= 1; i--) {
       this.stocks.unshift(i);
     }
@@ -42,6 +40,6 @@ export class ProductComponent implements OnInit {
   }
 
   quantityChange(event: any): void {
-    this.quantity = event.target.value as unknown as number;
+    this.quantity = event;
   }
 }

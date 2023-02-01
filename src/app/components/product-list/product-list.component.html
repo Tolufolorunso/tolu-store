@@ -10,10 +10,20 @@
 </header>
 <div class="my-5 mx-3 lg:mx-5">
   <h2 class="lead text-4xl text-center mb-4">Products</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2  justify-items-stretch" *ngIf="products.length > 0; else noProduct">
-    <app-product *ngFor="let p of products" [product]="p" (addProductToCart)="addProductToCart($event)"></app-product>
+  <div class="flex justify-center items-center" *ngIf=" loading; else ready">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
   </div>
-  <ng-template #noProduct>
-    <p class="text-2xl text-center">No products at this moment</p>
+
+  <ng-template #ready>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2  justify-items-stretch" *ngIf="products.length > 0; else noProduct">
+      <app-product *ngFor="let p of products" [product]="p" (addProductToCart)="addProductToCart($event)"></app-product>
+    </div>
+    <ng-template #noProduct>
+      <p class="text-2xl text-center">No products at this moment</p>
+    </ng-template>
   </ng-template>
+
 </div>

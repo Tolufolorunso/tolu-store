@@ -29,7 +29,6 @@ export class ProductService {
     formData.append('price', data.price);
     formData.append('name', data.name);
 
-    console.log(data);
     return this.http.post<Product>(`${API_URL}/products`, formData, {
       headers: this.headers,
     });

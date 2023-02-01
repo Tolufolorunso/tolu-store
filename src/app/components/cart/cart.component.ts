@@ -91,7 +91,6 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       },
       error: (err) => {
-        console.log(err.error);
         this.loading = false;
       },
       complete: () => {

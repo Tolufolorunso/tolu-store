@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit {
   @Output() decreaseQuantity: EventEmitter<string> = new EventEmitter();
 
   ngOnInit(): void {
-    this.imgUrl = `${API_URL}/${this.cartItem.product.imageurl}`;
+    this.imgUrl = this.cartItem.product.imageurl as unknown as string;
   }
 
   increase(productId: string): void {

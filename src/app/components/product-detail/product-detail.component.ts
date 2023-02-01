@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
       this.productService.getSingleProduct(this.productId).subscribe({
         next: (data: any) => {
           this.product = data.product;
-          this.imgUrl = `${API_URL}/${this.product.imageurl}`;
+          this.imgUrl = this.product.imageurl as unknown as string;
           this.alt = this.product.name;
           this.productName = this.product.name;
           this.productPrice = this.product.price as unknown as number;
@@ -52,8 +52,6 @@ export class ProductDetailComponent implements OnInit {
     });
 
     this.productService.getOrderFromLocalStore().forEach((p: any) => {
-      console.log(p.productId, this.productId);
-      console.log(p.productId === this.productId);
       if (p.productId == this.productId) {
         this.isProductExistsInCart = true;
         this.quantity = p.quantity;
@@ -63,8 +61,7 @@ export class ProductDetailComponent implements OnInit {
 
   // addToCart(id: number) {}
   quantityChange(event: any): void {
-    this.quantity = event.target.value as unknown as number;
-    // console.log(32, event.target.value, this.quantity);
+    this.quantity = event;
   }
 
   addToCart(): void {
